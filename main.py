@@ -6,7 +6,7 @@ with open('general.py', 'r') as f:
     source_code = f.read()
 
 # Находим все строки с русским текстом в кавычках
-strings = re.findall(r"(['\"]{1,3}(?=.*[А-Яа-яЁё])[А-Яа-яЁё\s,.:!?…—\"'-]*['\"]{1,3})", source_code)
+strings = re.findall(r"(f?['\"]{1,3}(?=.*[А-Яа-яЁё])[А-Яа-яЁё\s,{}.:!?—\"'-]*['\"]{1,3})", source_code)
 
 # Создаем новый файл для инициализации переменных
 with open('general_2.py', 'w') as new_file:
