@@ -2,16 +2,16 @@ import re
 from transliterate import translit
 
 # Читаем исходный файл
-with open('general.py', 'r') as f:
+with open('general.py', 'r', encoding='utf8') as f:
     source_code = f.read()
 
 # Находим все строки с русским текстом в кавычках
 strings = re.findall(r"(f?['\"]{1,3}(?=.*[А-Яа-яЁё])[А-Яа-яЁё\s,{}.:!?—\"'-]*['\"]{1,3})", source_code)
 
 # Создаем новый файл для инициализации переменных
-with open('general_2.py', 'w') as new_file:
+with open('general_2.py', 'w', encoding='utf8') as new_file:
     # Создаем новый файл для присвоения переменных
-    with open('ru.ftl', 'a') as assign_file:
+    with open('ru.ftl', 'a', encoding='utf8') as assign_file:
         existing_variables = set()  # Множество для отслеживания существующих переменных
         for i, string in enumerate(strings):
             text = string.strip("'\"")  # Значение переменной (русский текст в кавычках)
